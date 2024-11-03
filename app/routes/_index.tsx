@@ -62,6 +62,21 @@ const data = [
     id: "1",
     name: "Peyton",
     streak: 100
+  },
+  {
+    id: "2",
+    name: "Peyton",
+    streak: 100
+  },
+  {
+    id: "4",
+    name: "Peyton",
+    streak: 100
+  },
+  {
+    id: "5",
+    name: "Peyton",
+    streak: 100
   }
 ]
 
