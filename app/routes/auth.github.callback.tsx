@@ -1,4 +1,3 @@
-// app/routes/auth/github/callback.tsx
 import type { LoaderFunctionArgs } from "@remix-run/node"
 import { authenticator } from "~/services/auth.server"
 

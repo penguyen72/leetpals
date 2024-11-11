@@ -1,3 +1,4 @@
+import { MetaFunction } from "@remix-run/node"
 import {
   Links,
   Meta,
@@ -6,6 +7,13 @@ import {
   ScrollRestoration
 } from "@remix-run/react"
 import "./tailwind.css"
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Leetpals" },
+    { name: "description", content: "Welcome to Remix!" }
+  ]
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

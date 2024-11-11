@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs, redirect } from "@remix-run/node"
-import { Outlet } from "@remix-run/react"
+import { Outlet, useNavigate } from "@remix-run/react"
 import { SideBar } from "~/components/side-bar"
 import { Avatar, AvatarFallback } from "~/components/ui/avatar"
 import { Button } from "~/components/ui/button"
@@ -15,18 +15,24 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 
 export default function Layout() {
+  const navigate = useNavigate()
+
   return (
     <div className="flex w-full h-full">
       <SideBar />
       <div className="flex flex-col flex-1">
         <div className="flex p-2 items-center justify-between">
           <div className="flex">
-            <Button className="text-black" variant="link">
+            <Button
+              className="text-black"
+              variant="link"
+              onClick={() => navigate("/")}
+            >
               Introduction
             </Button>
-            <Button className="text-black" variant="link">
+            {/* <Button className="text-black" variant="link">
               Leaderboard
-            </Button>
+            </Button> */}
           </div>
           <Avatar className="mr-2">
             <AvatarFallback>CN</AvatarFallback>

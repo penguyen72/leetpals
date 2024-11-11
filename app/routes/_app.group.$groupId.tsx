@@ -1,13 +1,6 @@
-import { type MetaFunction } from "@remix-run/node"
+import { useParams } from "@remix-run/react"
 import { createColumnHelper } from "@tanstack/react-table"
 import { DataTable } from "~/components/data-table"
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "Leetpals" },
-    { name: "description", content: "Welcome to Remix!" }
-  ]
-}
 
 type User = {
   id: string
@@ -63,10 +56,11 @@ const data = [
   }
 ]
 
-export default function Index() {
+export default function Page() {
+  const { groupId } = useParams()
   return (
-    <div>
-      <p className="text-2xl font-semibold">Georgia Tech</p>
+    <div className="flex flex-col gap-4 max-w-4xl mx-auto">
+      {groupId} <p className="text-2xl font-semibold">Georgia Tech</p>
       <DataTable columns={columns} data={data} />
     </div>
   )
