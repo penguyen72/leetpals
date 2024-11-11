@@ -1,7 +1,7 @@
 import { ActionFunctionArgs } from "@remix-run/node"
 import { redirect } from "@remix-run/react"
 import { authenticator } from "~/services/auth.server"
-import { prisma } from "~/services/db.server"
+import prisma from "~/services/db.server"
 
 export async function action({ request }: ActionFunctionArgs) {
   const user = await authenticator.isAuthenticated(request)

@@ -1,5 +1,6 @@
 import { json, LoaderFunctionArgs, redirect } from "@remix-run/node"
 import { authenticator } from "~/services/auth.server"
+import prisma from "~/services/db.server"
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const user = await authenticator.isAuthenticated(request)
@@ -25,10 +26,12 @@ export async function loader({ request }: LoaderFunctionArgs) {
       where: {
         id: {
           in: groupIds
-        }
+        },
+        isActive: true
       }
     })
     return groups
   })
+
   return groups
 }

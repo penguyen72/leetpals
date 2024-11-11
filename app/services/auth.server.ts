@@ -2,7 +2,7 @@ import { Authenticator } from "remix-auth"
 import { GoogleStrategy } from "remix-auth-google"
 import { GitHubStrategy } from "remix-auth-github"
 import { sessionStorage } from "~/services/session.server"
-import { prisma } from "~/services/db.server"
+import prisma from "~/services/db.server"
 
 type User = {
   email: string

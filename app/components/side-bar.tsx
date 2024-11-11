@@ -1,4 +1,4 @@
-import { useFetcher, useNavigate } from "@remix-run/react"
+import { useFetcher, useNavigate, useParams } from "@remix-run/react"
 import { ChartNoAxesGantt, Hash } from "lucide-react"
 import { useEffect } from "react"
 import { Button } from "~/components/ui/button"
@@ -6,6 +6,7 @@ import { action } from "~/routes/api.create-group"
 import { loader } from "~/routes/api.get-groups"
 
 export function SideBar() {
+  const params = useParams()
   const navigate = useNavigate()
   const postFetcher = useFetcher<typeof action>()
   const getFetcher = useFetcher<typeof loader>()
@@ -19,6 +20,8 @@ export function SideBar() {
   const handleCreate = () => {
     postFetcher.submit(null, { method: "post", action: "/api/create-group" })
   }
+
+  const groupId = params.groupId
 
   return (
     <div className="flex flex-col w-60 border-r overflow-y-scroll">
@@ -36,7 +39,7 @@ export function SideBar() {
             <Button
               key={group.id}
               className="justify-start"
-              variant="ghost"
+              variant={groupId === group.id ? "secondary" : "ghost"}
               onClick={() => navigate(`/group/${group.id}`)}
             >
               <Hash />
